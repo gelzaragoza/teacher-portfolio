@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
-export default function Accordion({ title, content }) {
+export default function Accordion({ title, children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -15,8 +15,8 @@ export default function Accordion({ title, content }) {
         {isOpen ? <FaChevronUp /> : <FaChevronDown />}
       </button>
       {isOpen && (
-        <div className="px-4 py-3 bg-white text-gray-800 whitespace-pre-line leading-relaxed">
-          {content}
+        <div className="px-4 py-3 bg-white text-gray-800 leading-relaxed space-y-2">
+          {children}
         </div>
       )}
     </div>
