@@ -1,23 +1,17 @@
 // src/pages/index.js
 import { useEffect } from "react";
-import {
-  FaUserGraduate,
-  FaBook,
-  FaChalkboardTeacher,
-  FaSchool,
-  FaFileAlt,
-  FaFolderOpen
-} from "react-icons/fa";
-import Accordion from "../components/Accordion";
+import { FaUserGraduate, FaBook, FaChalkboardTeacher, FaSchool, FaFileAlt, FaFolderOpen } from "react-icons/fa";
 
 const sections = [
   { id: "home", title: "Home", icon: <FaUserGraduate /> },
   { id: "about", title: "About Me", icon: <FaUserGraduate /> },
+  { id: "acknowledgement", title: "Acknowledgement", icon: <FaBook /> },
+  { id: "cv", title: "Curriculum Vitae", icon: <FaFileAlt /> },
   { id: "philosophy", title: "Teaching Philosophy", icon: <FaChalkboardTeacher /> },
+  { id: "deployment", title: "Deployment", icon: <FaSchool /> },
   { id: "research", title: "Research", icon: <FaBook /> },
   { id: "materials", title: "Materials", icon: <FaFileAlt /> },
   { id: "artifacts", title: "Artifacts", icon: <FaFolderOpen /> },
-  { id: "acknowledgement", title: "Acknowledgement", icon: <FaBook /> },
 ];
 
 export default function Home() {
@@ -29,17 +23,17 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="font-sans text-gray-900 bg-yellow-50 scroll-smooth">
+    <div className="font-sans text-gray-900 bg-yellow-50">
       <header className="bg-red-700 text-yellow-100 fixed w-full z-50 shadow-lg">
         <nav className="max-w-6xl mx-auto flex flex-wrap justify-center gap-4 p-4">
           {sections.map(({ id, title, icon }) => (
             <a
               key={id}
               href={`#${id}`}
-              className="flex items-center gap-2 hover:text-yellow-300 transition-all duration-300 text-sm font-semibold relative group"
+              className="flex items-center gap-1 hover:text-yellow-300 transition-all duration-200 text-sm font-semibold"
             >
               {icon}
-              <span className="group-hover:underline transition-all duration-300">{title}</span>
+              {title}
             </a>
           ))}
         </nav>
@@ -48,26 +42,23 @@ export default function Home() {
       <main className="pt-28 max-w-4xl mx-auto px-6 space-y-20">
         <section id="home" className="text-center animate-fade-in">
           <img
-            src="/kirsteen-main.JPG"
+            src="/placeholder-hero.jpg"
             alt="Profile"
-            className="mx-auto w-48 h-48 rounded-full mb-6 object-cover border-4 border-yellow-300 shadow-lg hover:shadow-xl transition duration-300"
+            className="mx-auto w-32 h-32 rounded-full mb-4 object-cover border-4 border-yellow-300 shadow-md"
           />
-          <h1 className="text-4xl font-extrabold text-red-700 mb-3 tracking-wide">
+          <h1 className="text-3xl font-bold text-red-700 mb-2">
             Artifacts of Odyssey
           </h1>
-          <p className="text-lg text-gray-700 mb-4">
-            <span className="font-semibold">Kirsteen Mae Zaragoza</span> <br />
-            Bachelor of Secondary Education, Major in English <br />
-            Cebu Normal University
+          <p className="text-lg leading-relaxed mb-4">
+            Kirsteen Mae Zaragoza • Cebu Normal University • English Major
           </p>
           <a
             href="#cv"
-            className="inline-block bg-yellow-300 text-red-700 font-bold px-6 py-2 rounded-full hover:bg-yellow-400 hover:scale-105 transition transform duration-200 shadow"
+            className="bg-yellow-300 text-red-700 font-bold px-4 py-2 rounded hover:bg-yellow-400 transition"
           >
             View My CV
           </a>
         </section>
-
 
         <section id="about" className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
           <h2 className="text-2xl font-bold text-red-700 mb-4">About Me</h2>
@@ -116,14 +107,19 @@ export default function Home() {
           </p>
         </section>
 
-        <section id="philosophy" className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-          <h2 className="text-2xl font-bold text-red-700 mb-6">Teaching Philosophy & Deployment</h2>
-          <Accordion title="About the Schools" content={`CEBU NORMAL UNIVERSITY - INTEGRATED LABORATORY SCHOOL\n\nThe CNU-ILS serves as a training ground for pre-service educators. It provides academic and practical teaching opportunities across multiple grade levels. With its vision of becoming a globally recognized SMART campus by 2027 and mission of equipping graduates for DVUCAD conditions, the school emphasizes real-world relevance and student engagement.\n\nEINSTEIN SCHOOL CEBU\n\nFounded in 2004, Einstein School Cebu offers a dynamic curriculum from preschool to senior high school. With the motto “Every Child a Scientist with a Heart,” the school promotes scientific thinking and compassion. Its inclusive and disciplined environment creates a strong community of learners.`} />
-          <Accordion title="About My Mentors" content={`Dr. Monique Cordova guided my on-campus internship with care and valuable insights. Her mentorship taught me to design authentic and relevant learning experiences.\n\nMs. Vanessa Pagorogon mentored me during my off-campus deployment. Her calm confidence and trust helped me step into teaching with courage. I learned the power of supportive, non-micromanaging guidance that empowers student-teachers.`} />
-          <Accordion title="About the Students" content={`Grade 10-R (CNU-ILS): Energetic, reflective, and empathetic class of 47.\nGrade 11 HUMSS Piety: Emotionally intelligent and expressive learners.\nGrade 11 STEM Temperance: Calm, respectful, and detail-oriented students.\nGrade 11 STEM Perseverance: Most lively and responsive group. Made teaching truly enjoyable and collaborative.`} />
-          <Accordion title="Pre-deployment" content={`Orientation & Pinning Week: Marked by high anticipation and personal growth. I met my students and mentors and delivered my first teaching demo with support from peers and mentors.\n\nUnexpected Delay: Earthquake and SCUAA week delayed my face-to-face teaching. I adapted the lesson to an online format and delivered it successfully, ending with rewarding feedback and personal realization.`} />
-          <Accordion title="Off-Campus Deployment" content={`Einstein School warmly welcomed me. Ms. Van’s guidance helped me transition from nervousness to confidence.\n\nValentine's themed teaching demo using lollipops and love-based lesson design was a hit. Students actively participated and appreciated the creative, engaging approach.\n\nMy last week was filled with reflection and emotional moments. I realized how much I grew and how deeply I connected with the students, mentors, and the school itself.`} />
-        </section>
+        {sections.slice(3).map(({ id, title }) => (
+          <section id={id} key={id} className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+            <h2 className="text-2xl font-bold text-red-700 mb-4">{title}</h2>
+            <img
+              src={`/placeholder-${id}.jpg`}
+              alt={`${title} visual`}
+              className="w-full h-64 object-cover rounded mb-4"
+            />
+            <p className="whitespace-pre-line leading-relaxed">
+              [Insert {title} content here...]
+            </p>
+          </section>
+        ))}
       </main>
 
       <footer className="text-center text-xs text-red-700 py-6 bg-yellow-100 mt-20">
@@ -134,6 +130,7 @@ export default function Home() {
         .animate-fade-in {
           animation: fadeIn 1s ease-in-out;
         }
+
         @keyframes fadeIn {
           0% { opacity: 0; transform: translateY(20px); }
           100% { opacity: 1; transform: translateY(0); }
